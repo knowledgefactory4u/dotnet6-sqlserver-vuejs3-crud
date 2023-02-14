@@ -48,6 +48,6 @@ You can also start the application in debug mode in Visual Studio by opening the
 
 ```npm run serve -- --port 8081```
 
-<h2>From the browser call the endpoint http://localhost:8081/.</h2>
+<h2>From the browser call the endpoint http://localhost:8081</h2>
 
 
