@@ -21,9 +21,9 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public IActionResult GetAll(string filter, string para)
     {
-        var users = _userService.GetAll();
+        var users = _userService.GetAll(filter);
         return Ok(users);
     }
 

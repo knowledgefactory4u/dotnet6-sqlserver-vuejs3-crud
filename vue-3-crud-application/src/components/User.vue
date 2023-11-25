@@ -49,11 +49,14 @@ export default {
   },
   methods: {
     refreshUserDetails() {
-      UserDataService.retrieveUser(this.id).then((res) => {
-        this.firstName = res.data.firstName;
-        this.lastName = res.data.lastName;
-        this.email = res.data.email;
-      });
+      if(this.id != -1){
+        console.log('refreshUserDetails');
+        UserDataService.retrieveUser(this.id).then((res) => {
+          this.firstName = res.data.firstName;
+          this.lastName = res.data.lastName;
+          this.email = res.data.email;
+        });
+      }
     },
     validateAndSubmit(e) {
       e.preventDefault();

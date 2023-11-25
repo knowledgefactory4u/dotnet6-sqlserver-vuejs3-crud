@@ -8,6 +8,11 @@ class UserDataService {
         return axios.get(`${USER_API_URL}/users`);
     }
 
+    filterAllUsers(str) {
+        var para="p";
+        return axios.get(`${USER_API_URL}/users/?filter=${str}&para=${para}`);
+    }
+
     retrieveUser(id) {
         return axios.get(`${USER_API_URL}/users/${id}`);
     }
