@@ -35,6 +35,7 @@
         </table>
         <div class="row">
           <button class="btn btn-success" v-on:click="addUser()">Add</button>
+          <button class="btn btn-success" v-on:click="filterUser()">Filter</button>
         </div>
       </div>
     </div>
@@ -57,7 +58,17 @@
         });
       },
       addUser() {
+        // UserDataService.createUser({
+        //   "firstName": "first2",
+        //   "lastName": "last2",
+        //   "email": "first2@email.com"
+        // })
         this.$router.push(`/user/-1`);
+      },
+      filterUser() {
+        UserDataService.filterAllUsers("f").then((res) => {
+          this.users = res.data;
+        });
       },
       updateUser(id) {
         this.$router.push(`/user/${id}`);

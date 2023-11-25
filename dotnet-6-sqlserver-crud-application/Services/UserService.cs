@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Entities;
 using WebApi.Helpers;
 using WebApi.Models.Users;
@@ -18,9 +19,9 @@ namespace WebApi.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAll(string filter)
         {
-            return _context.Users;
+            return _context.Users.Where(u => u.FirstName.StartsWith(filter));
         }
 
         public User GetById(int id)
@@ -28,7 +29,7 @@ namespace WebApi.Services
             return getUser(id);
         }
 
-        public void Create(CreateRequest model)
+        public void Create([FromBody] CreateRequest model)
         {
             // validate
             if (_context.Users.Any(x => x.Email == model.Email))
